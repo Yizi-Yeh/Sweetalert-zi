@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./sweetalert.css" />
+  </head>
+  <body>
+    <button id="btn">Alert Click</button>
+    <button id="btn2">Alert Click2</button>
+
+    <!-- 透過 div 丟入模板 -->
+    <div id="swAlert"></div>
+
+    <!-- <div class="sw_bg">
+        <div class="sw_mid">
+          <div class="sw_content">
+            <p>${text}</p>
+            <button>ok</button>
+          </div>
+        </div>
+      </div> -->
+
+    <!-- 利用模組化方式 -->
+    <script type="module">
+      import SweetAlert from "./sweetalert.js";
+      // new 一個實體
+      const sw = new SweetAlert();
+      const sw2 = new SweetAlert();
+
+      const btn = document.getElementById("btn");
+      const btn2 = document.getElementById("btn2");
+
+      btn.addEventListener("click", () => {
+        // 透過實體取得方法(.open使用方法)
+        sw.open("Hello world").then((res) => {
+          console.log("ok");
+        });
+      });
+
+      btn2.addEventListener("click", () => {
+        // 透過實體取得方法(.open使用方法)
+        sw.open("yizi", () => {
+          console.log("close");
+        });
+      });
+    </script>
+  </body>
+</html>
